@@ -1,0 +1,8 @@
+colors:
+  - name: blue
+    hex: ff0000
+  - name: green
+    hex: 00ff00
+    labels:
+      - experimental
+      - combination: blue 
