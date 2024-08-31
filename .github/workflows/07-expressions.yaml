@@ -1,0 +1,29 @@
+name: '07 - Expressions :rocket:'
+
+on: 
+    push:
+    workflow_dispatch:
+        inputs:
+            debug:
+                type: boolean
+                default: false
+                required: false
+
+jobs:
+    echo:
+        runs-on: ubuntu-latest
+        steps:
+            - name: ${{ inputs.debug }} Print start-up data
+              if: ${{ inputs.debug }}
+              run: |-
+                echo "Triggered by: ${{ github.event_name }}"
+                echo "Triggered by: ${{ github.ref }}"
+                echo "Triggered by: ${{ github.SHA }}"
+                echo "Triggered by: ${{ runner.os }}"
+            - name: ${{ inputs.debug }} Print when triggered from main
+              if: ${{ inputs.debug }} && ${{ github.ref_name }} == 'main'
+              run: |-
+                echo "I was triggered from main"
+            - name:
+              run: |-
+                echo "Hello, world"
