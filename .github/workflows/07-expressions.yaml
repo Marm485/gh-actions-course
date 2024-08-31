@@ -1,7 +1,6 @@
 name: '07 - Expressions :rocket:'
 
 on: 
-    push:
     workflow_dispatch:
         inputs:
             debug:
