@@ -25,3 +25,6 @@ jobs:
         environment: prod
         env:
             my-env-value: ${{ vars.TARGET_VAR == null && 'default value' || vars.TARGET_VAR }}
+        steps:
+            - name: Echo vars
+              run: echo "Deploying yo prod"
