@@ -8,7 +8,7 @@ jobs:
         runs-on: ubuntu-latest
         environment: staging
         env:
-            my-env-value: ${{ vars.TARGET_VAR == null && inputs.target-env.default || vars.TARGET_VAR }}
+            my-env-value: ${{ vars.TARGET_VAR || inputs.target-env.default }}
         steps:
             - name: Echo vars
               run: |- 
@@ -27,4 +27,4 @@ jobs:
             my-env-value: ${{ vars.TARGET_VAR == null && 'default value' || vars.TARGET_VAR }}
         steps:
             - name: Echo vars
-              run: echo "Deploying yo prod"
+              run: echo "Deploying yo"
