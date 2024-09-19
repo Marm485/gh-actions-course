@@ -36,5 +36,5 @@ runs:
       working-directory: ${{ inputs.working-dir }}
       shell: bash
       env:
-        run-command: ${{ inputs.target-env == dev && npm ci && npm ci --omit=dev }}
+        run-command: ${{ inputs.target-env == 'dev' && npm ci && npm ci --omit=dev }}
       run: ${{ env.run-command }}
