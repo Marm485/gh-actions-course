@@ -28,6 +28,7 @@ jobs:
               with:
                 node-version: 20.x
                 working-dir: ./17-custom-actions/react-app
+                target-env: ${{ inputs.target-env }}
             - name: Test
               run: npm run test
             - name: Build
