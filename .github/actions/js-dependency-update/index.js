@@ -41,8 +41,8 @@ async function run()
     if (updateOutput.stdout.length > 0)
     {
         core.info('There are updates available');
-        await exec.exec('git config --global user.name ghautomation');
-        await exec.exec('git config --global user.email ghautomation@email.com');
+        await exec.exec('git config --global user.name "ghautomation"');
+        await exec.exec('git config --global user.email "ghautomation@email.com"');
         await exec.exec('git checkout -b ' + target_branch);
         await exec.exec('git add ' + working_dir + '/package*.json');
         await exec.exec('git commit -m "updated project dependencies"');
