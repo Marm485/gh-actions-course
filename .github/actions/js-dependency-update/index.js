@@ -42,7 +42,7 @@ async function run()
     {
         core.info('There are updates available');
         await exec.exec('git checkout -b ' + target_branch);
-        await exec.exec('git add ' + target_branch + '/package*.json');
+        await exec.exec('git add ' + working_dir + '/package*.json');
         await exec.exec('git commit -m "updated project dependencies"');
         await exec.exec('git push -u origin ' + target_branch);
 
