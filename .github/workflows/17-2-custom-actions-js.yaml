@@ -8,14 +8,20 @@ on:
                 default: main
             target-branch:
                 required: false
+                default: update/npm-dependencies
             working-dir:
                 required: true
+                default: ./17-custom-actions/react-app
             debug:
                 type: boolean
                 required: false
                 default: false
 
 run-name: 17 - 2 - Custom Actions - JS | Base ${{ inputs.base-branch }} | Target ${{ inputs.target-branch }} | Directory ${{ inputs.working-dir }}
+
+permissions:
+    contents: write
+    pull-requests: write
 
 jobs:
     dependency-update:
