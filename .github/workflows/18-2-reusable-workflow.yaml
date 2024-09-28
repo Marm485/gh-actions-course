@@ -4,6 +4,7 @@ on:
     workflow_dispatch:
         inputs:
             target-directory:
+                default: './17-custom-actions'
                 required: true
 
 jobs:
@@ -17,7 +18,7 @@ jobs:
               id: reusable
               uses: ./.github/workflows/18-1-reusable-workflows.yaml
               with:
-                target-directory: ./17-custom-actions
+                target-directory: ${{ inputs.target-directory }}
     
     print_outputs:
         runs-on: ubuntu-latest
