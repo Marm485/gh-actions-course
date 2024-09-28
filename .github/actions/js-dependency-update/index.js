@@ -40,6 +40,7 @@ async function run()
 
     if (updateOutput.stdout.length > 0)
     {
+        core.setOutput('updates-available', true)
         core.info('There are updates available');
         await exec.exec('git config --global user.name "ghautomation"');
         await exec.exec('git config --global user.email "ghautomation@email.com"');
@@ -69,6 +70,7 @@ async function run()
         }
     } else
     {
+        core.setOutput('updates-available', false)
         core.info('No updates at this point')
     }
 }

@@ -30,6 +30,7 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v4
             - name: Check for dependency updates
+              id: updates
               uses: ./.github/actions/js-dependency-update
               with:
                 base-branch: ${{ inputs.base-branch }}
@@ -37,3 +38,5 @@ jobs:
                 working-directory: ${{ inputs.working-dir }}
                 gh-token: ${{ secrets.GITHUB_TOKEN }}
                 debug: ${{ inputs.debug }}
+            - name: Print updates available
+              run: echo ${{ steps.updates.outputs.updates-available && 'There are updates available' || 'No updates available at the moment' }}

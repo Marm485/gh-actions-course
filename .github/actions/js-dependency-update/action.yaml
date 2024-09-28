@@ -20,6 +20,10 @@ inputs:
     description: Whether the output debug messages to the console
     required: false
 
+outputs:
+  updates-available:
+    description: Whether updates are available or not
+
 runs:
   using: node20
   main: index.js
