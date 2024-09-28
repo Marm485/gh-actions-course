@@ -1,4 +1,4 @@
-name: 18 - 2 - Reeusable Workflows
+name: 18 - 2 - Reusable Workflows
 
 on: 
     workflow_dispatch:
@@ -9,18 +9,9 @@ on:
 
 jobs:
     reuse_workflow:
-        runs-on: ubuntu-latest
-        outputs:
-            build-status: ${{ steps.reusable.outputs.build-status }}
-            url: ${{ steps.reusable.outputs.url }}
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-            - name: Call reusable workflow
-              id: reusable
-              uses: ./.github/workflows/18-1-reusable-workflows.yaml
-              with:
-                target-directory: ${{ inputs.target-directory }}
+        uses: ./.github/workflows/18-1-reusable-workflows.yaml
+        with:
+            target-directory: ${{ inputs.target-directory }}
     
     print_outputs:
         runs-on: ubuntu-latest
