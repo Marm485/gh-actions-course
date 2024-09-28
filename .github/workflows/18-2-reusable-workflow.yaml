@@ -1,0 +1,32 @@
+name: 18 - 2 - Reeusable Workflows
+
+on: 
+    workflow_dispatch:
+        inputs:
+            target-directory:
+                required: true
+
+jobs:
+    reuse_workflow:
+        runs-on: ubuntu-latest
+        outputs:
+            build-status: ${{ steps.reusable.outputs.build-status }}
+            url: ${{ steps.reusable.outputs.url }}
+        steps:
+            - name: Call reusable workflow
+              id: reusable
+              uses: ./.github/workflows/18-1-reusable-workflows.yaml
+              with:
+                target-directory: ./17-custom-actions
+    
+    print_outputs:
+        runs-on: ubuntu-latest
+        needs: 
+            - reuse_workflow
+        steps:
+            - name: Print Outputs
+              run: |
+                echo 'Workflow caller printer'
+                echo 'build-status: ${{ needs.reuse_workflow.outputs.build-status }}'
+                echo 'url: ${{ needs.reuse_workflow.outputs.url }}'
+            
