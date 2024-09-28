@@ -24,11 +24,14 @@ jobs:
             - name: Checkout Repo
               uses: actions/checkout@v4
             - name: Setup Node and NPM dependencies
+              id: install_dependencies
               uses: ./.github/actions/composite-cache-deps
               with:
                 node-version: 20.x
                 working-dir: ./17-custom-actions/react-app
                 target-env: ${{ inputs.target-env }}
+            - name: Print dependencies setup output
+              run: echo ${{ steps.install_dependencies.outputs.installed-deps }}
             - name: Test
               run: npm run test
             - name: Build
