@@ -1,0 +1,14 @@
+name: 18 - 3 - Reusable Workflows
+
+on:
+    workflow_dispatch:
+
+jobs:
+    deploy:
+        uses: ./.github/workflows/18-1-reusable-workflows.yaml
+        with:
+            target-directory: ./17-custom-actions
+    
+    e2e-tests:
+        needs: deploy
+        uses: Marm485/github-actions-course-example-e2e/.github/workflows/e2e.yaml@main
