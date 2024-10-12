@@ -36,4 +36,5 @@ jobs:
                 exit 0
                 else
                 echo "PR is not a feature"
-                ex
+                exit 1
+                fi
