@@ -5,7 +5,7 @@ const exec = require('@actions/exec')
 async function run()
 {
 
-    var title = core.getInput(pr - title);
+    var title = core.getInput('pr-title');
 
     if (title.startsWith('feat'))
     {
