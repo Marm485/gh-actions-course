@@ -9,11 +9,11 @@ async function run()
 
     if (title.startsWith("feat"))
     {
-        core.info("echo PR is a feature")
+        core.info("PR is a feature")
     }
     else
     {
-        core.info("PR is not a feature")
+        await exec.exec("echo", ["PR is not a feature"])
     }
 };
 
